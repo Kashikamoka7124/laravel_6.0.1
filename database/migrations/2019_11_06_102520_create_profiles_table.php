@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CreateProfilesTable extends Migration
 {
@@ -17,9 +18,10 @@ class CreateProfilesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->string('name')->nullable();
-            $table->string('address')->nullable();
+            $table->text('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('slug')->unique();
+            $table->softDeletes();
 
 
             $table->timestamps();

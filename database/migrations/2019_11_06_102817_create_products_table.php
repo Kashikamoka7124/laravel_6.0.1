@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CreateProductsTable extends Migration
 {
@@ -16,12 +17,14 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->double('price');
             $table->boolean('discount');
             $table->string('discound_price');
             $table->string('thumbnail');
             $table->string('option');
+            $table->softDeletes();
+
             
             $table->timestamps();
         });

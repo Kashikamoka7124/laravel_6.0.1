@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CreatePaymentsTable extends Migration
 {
@@ -18,6 +19,8 @@ class CreatePaymentsTable extends Migration
             $table->string('name');
             $table->string('option');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

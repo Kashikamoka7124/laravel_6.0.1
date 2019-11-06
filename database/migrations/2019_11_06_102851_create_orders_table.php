@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CreateOrdersTable extends Migration
 {
@@ -21,6 +22,8 @@ class CreateOrdersTable extends Migration
             $table->string('status');
             $table->unsignedInteger('price');
             $table->unsignedInteger('payment_id');
+            $table->softDeletes();
+
 
             $table->timestamps();
         });
