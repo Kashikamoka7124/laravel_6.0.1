@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Catagory;
+use Illuminate\Auth\user;
 use Illuminate\Http\Request;
 
 class CatagoryController extends Controller
@@ -22,9 +23,19 @@ class CatagoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(array $data)
     {
-        //
+        $user = user::create([
+            'email' =>$data["email"],
+            'password'=>Hash::make($data['password'])
+        ]);
+
+        if($user){
+            profile::create([
+            'user_id' => $user->id,
+            ]);
+
+        }
     }
 
     /**
