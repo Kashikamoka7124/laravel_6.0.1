@@ -20,7 +20,7 @@ class CreateProfilesTable extends Migration
             $table->string('name')->nullable();
             $table->text('address')->nullable();
             $table->string('phone')->nullable();
-            $table->string('slug')->unique();
+            $table->string('slug')->nullable();
             $table->softDeletes();
 
 

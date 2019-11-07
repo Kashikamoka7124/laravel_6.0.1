@@ -9,5 +9,8 @@ class Payment extends Model
 {
     //
     use SoftDeletes;
+
+    protected $gaurded =['*'];
+    
     protected $dates = ['deleted_at'];
 }

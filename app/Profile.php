@@ -9,5 +9,8 @@ class Profile extends Model
 {
     //
     use SoftDeletes;
+
+    protected $gaurded =['*'];
+    
     protected $dates = ['deleted_at'];
 }

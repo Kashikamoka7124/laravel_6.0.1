@@ -19,13 +19,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('sass/admin.scss')}}">
 </head>
 <body>
-    <div id="app">
-    	@yield('admin.partials.app')
+
 
         <main class="py-4">
+  		  	@yield('admin.partials.app')
             @yield('content')
         </main>
-    </div>
     <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
