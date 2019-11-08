@@ -18,6 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['as','admin.'],function(){
-	Route::get('admin', 'adminController@dashboard')->name('dashboard');
+Route::group(['as'=>'admin.', 'middleware'=>['auth','admin'],'prefix'=>'admin'],function(){
+	Route::get('dashboard', 'adminController@dashboard')->name('dashboard');
+	Route::resource('product','productController');
+	Route::resource('catagory','CatagoryController');
+	Route::resource('order','OrderController');
+	Route::resource('customer','CustomerController');
 });

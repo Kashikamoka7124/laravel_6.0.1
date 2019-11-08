@@ -14,33 +14,33 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link @if(request()->url() == route('admin.dashboard')){{'active'}}@endif" href="{{route('admin.dashboard')}}">
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link @if(request()->url() == route('admin.order.index')){{'active'}}@endif" href="{{route('admin.order.index')}}">
                   <span data-feather="file"></span>
                   Orders
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link @if(request()->url() == route('admin.product.index')){{'active'}}@endif" href="{{route('admin.product.index')}}">
                   <span data-feather="shopping-cart"></span>
                   Products
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link @if(request()->url() == route('admin.customer.index')){{'active'}}@endif" href="{{route('admin.customer.index')}}">
                   <span data-feather="users"></span>
                   Customers
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link @if(request()->url() == route('admin.catagory.index')){{'active'}}@endif" href="{{route('admin.catagory.index')}}">
                   <span data-feather="bar-chart-2"></span>
-                  Reports
+                  Catagory
                 </a>
               </li>
               <li class="nav-item">
