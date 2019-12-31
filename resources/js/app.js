@@ -6,6 +6,11 @@
 
 require('./bootstrap');
 
+const feather = require('feather-icons');
+
+feather.replace();
+
+window.ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
 window.Vue = require('vue');
 
 /**

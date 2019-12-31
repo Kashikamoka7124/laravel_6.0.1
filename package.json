@@ -22,5 +22,13 @@
         "sass-loader": "7.*",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^16.0.0",
+        "@ckeditor/ckeditor5-ui": "^16.0.0",
+        "ckeditor": "^4.12.1",
+        "feather-icon": "^0.1.0",
+        "feather-icons": "^4.25.0",
+        "update": "^0.7.4"
     }
 }

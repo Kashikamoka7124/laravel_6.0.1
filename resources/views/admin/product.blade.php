@@ -1,5 +1,6 @@
 @extends('admin.app')
-
 @section('content')
-<h2>Products</h2>
+@section('title')
+<h1 class="h2">Products</h1>
+@endsection
 @endsection

@@ -20,13 +20,14 @@ class AdminUser extends Seeder
         $role = Role::create([
         	'name'=>'admin',
         	'description'=>'User Role'
+
         ]);
 
         $user = User::create([
 
         	'email'=>'admin@admin.com',
         	'password'=>bcrypt('secret'),
-        	'role_id'=>$role->id
+        	'role_id'=> $role->id
         ]);
 
         $profile = Profile::create([
