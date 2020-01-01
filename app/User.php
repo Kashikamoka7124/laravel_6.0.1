@@ -24,6 +24,11 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+
+
+    protected $gaurded =['*'];
+    
+
     /**
      * The attributes that should be hidden for arrays.
      *

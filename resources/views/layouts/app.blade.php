@@ -76,5 +76,6 @@
         </main>
     </div>
     <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
+    @yield('admin_script')
 </body>
 </html>

@@ -29,6 +29,7 @@
         "ckeditor": "^4.12.1",
         "feather-icon": "^0.1.0",
         "feather-icons": "^4.25.0",
+        "select2": "^4.0.12",
         "update": "^0.7.4"
     }
 }
