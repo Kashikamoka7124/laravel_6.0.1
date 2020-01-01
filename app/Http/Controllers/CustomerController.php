@@ -15,7 +15,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customer = Profile::all();
-        return view('admin.customer',compact($customer));
+        return view('admin.customer.customer',compact($customer));
     }
 
     /**
