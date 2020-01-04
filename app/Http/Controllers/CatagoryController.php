@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Catagory;
 use Illuminate\Auth\user;
 use Illuminate\Http\Request;
+use App\Catagory;
 
 class CatagoryController extends Controller
 {
@@ -15,8 +15,8 @@ class CatagoryController extends Controller
      */
     public function index()
     {
-        $catagory = catagory::all();
-        return view('admin.catagory.catagory',compact($catagory));
+        $catagory = Catagory::all();
+        return view('admin.catagory.catagory',compact('catagory'));
     }
 
     /**
@@ -47,9 +47,27 @@ class CatagoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        
+        // dd($request);
 
+        $category  = catagory::create([
+
+            'title' => $request->title,
+            'description' => $request->description,
+            'slug' => $request->slug,
+
+        ]);
+
+        $category->parents()->attach($request->parent_id);
+
+        if($category){
+            return back()->with('message','Catagory has been added Successfully');
+        }
+        return back()->with('message','Catagory cannot be added');
+
+        // return back()->with($request-dd());
+
+    }
     /**
      * Display the specified resource.
      *

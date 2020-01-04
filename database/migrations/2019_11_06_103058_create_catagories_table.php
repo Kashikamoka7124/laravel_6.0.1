@@ -16,9 +16,9 @@ class CreateCatagoriesTable extends Migration
     {
         Schema::create('catagories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('title');
             $table->text('description');
-            $table->unsignedInteger('parent_id')->unsigned();
+            $table->text('slug');
             $table->softDeletes();
 
             $table->timestamps();

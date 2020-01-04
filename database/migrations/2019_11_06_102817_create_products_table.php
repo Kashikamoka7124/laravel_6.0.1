@@ -19,10 +19,11 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->double('price');
-            $table->boolean('discount');
-            $table->string('discound_price');
-            $table->string('thumbnail');
-            $table->string('option');
+            $table->integer('catagory_id');
+            $table->boolean('discount')->nullable();
+            $table->string('discound_price')->nullable();
+            $table->string('thumbnail')->nullable();
+            $table->string('option')->nullable();
             $table->softDeletes();
 
             

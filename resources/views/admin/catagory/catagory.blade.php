@@ -8,13 +8,36 @@
 @endsection
 <div class="container">
 	<div class="row">
+		<div class="col-md-12 ">
+			@if($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+						@foreach($errors->all() as $err)
+					    <li>{{$err}}</li>
+					    @endforeach
+					</ul>
+					
+				</div>
+			@endif
+
+		@if(session()->has('message'))
+			<div class="alert alert-success">
+				{{session('message')}}
+				
+			</div>
+		@endif
+		</div>
 		<div class="col-md-12 order-md-1">
 			<h4 class="mb-3">Add Catagory</h4>
-			<form class="needs-validation" novalidate>
+			<form class="needs-validation " method="post" action="{{route('admin.catagory.store')}}" novalidate>
+			@csrf
+
 				<div class="row">
 					<div class="col-md-12  col-lg-12 mb-3">
 						<label for="title">Title</label>
-						<input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+						<input type="title" name="title" class="form-control" id="txturl" placeholder="" value="" required>
+						<p class="small" >{{config('app.url')}}- <span id="slug_url"></span></p>
+						<input type="hidden" id="app_url" name="slug">
 						<div class="invalid-feedback">
 							Valid Title is required.
 						</div>
@@ -33,12 +56,16 @@
 				<div class="row">
 					<div class="col-md-12  col-lg-12 mb-3">
 						<label class="form-control-label">Select Category: </label>
-						<select class=" form-control js-example-basic-multiple" id="stylo" name="states[]" multiple="multiple">
-							<option value="0">Punam Chaudhary</option>
-							<option value="1">Gulnaaz Chaudhary</option>
-							<option value="2">chashman Chaudhary</option>
-							<option value="3">Hina Chaudhary</option>
-							<option value="4">Kashi Chaudhary</option>
+						<select class=" form-control js-example-basic-multiple" id="stylo" name="parent_id[]" multiple="multiple">					
+							<option value="0">chashman Chaudhary</option>
+							@if(isset($catagory)){
+
+							@foreach($catagory as $cat)
+							<option value="{{$cat->id}}">{{$cat->title}}</option>}
+							option
+							@endforeach
+							})
+							@endif
 							option
 						</select>
 					</div>
@@ -67,6 +94,14 @@
 <script type="text/javascript">
 	$(function(){
 		$('#stylo').select2();
+	})
+
+	$(function(){
+		$('#txturl').on('keyup',function(){
+			let url = slugify($(this).val());
+			$('#slug_url').html(url);
+			$('#app_url').val(url);
+		})
 	})
 </script>
 @endsection
