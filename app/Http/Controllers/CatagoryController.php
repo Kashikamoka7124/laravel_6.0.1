@@ -76,9 +76,14 @@ class CatagoryController extends Controller
      */
     public function show(Catagory $catagory)
     {
-        //
+        
     }
 
+
+    public function catagoryTable(){
+        $catagory = Catagory::all();
+        return view('admin.catagory.index',compact('catagory'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
