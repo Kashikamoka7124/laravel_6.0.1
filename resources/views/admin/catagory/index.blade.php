@@ -22,7 +22,7 @@
       <td>{{$cat->title}}</td>
       <td>{{$cat->created_at}}</td>
       <td>
-      	<a class="btn btn-primary">Edit</a>
+      	<a class="btn btn-primary" href ="{{route('admin.catagory.edit', $cat->id)}}">Edit</a>
       	<a class="btn btn-danger ">Delete</a>
       </td>
     </tr>

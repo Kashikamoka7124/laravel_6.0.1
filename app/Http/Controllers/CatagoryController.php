@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Auth\user;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use App\Catagory;
 
 class CatagoryController extends Controller
@@ -15,8 +16,8 @@ class CatagoryController extends Controller
      */
     public function index()
     {
-        $catagory = Catagory::all();
-        return view('admin.catagory.catagory',compact('catagory'));
+        $catagories = Catagory::all();
+        return view('admin.catagory.catagory',compact('catagories'));
     }
 
     /**
@@ -92,7 +93,9 @@ class CatagoryController extends Controller
      */
     public function edit(Catagory $catagory)
     {
-        //
+        $ids = arr::pluck($catagory->parents, 'id');
+        $Editcatagory = Catagory::where('id','!=',$catagory->id)->get();
+        return view('admin.catagory.catagory',['editcatagory'=> $Editcatagory, 'catagory'=>$catagory, 'parent_ids'=>$ids,]);
     }
 
     /**
@@ -104,7 +107,23 @@ class CatagoryController extends Controller
      */
     public function update(Request $request, Catagory $catagory)
     {
-        //
+        // dd($request);
+        $catagory->title = $request->title;
+        $catagory->slug = $request->slug;
+        $catagory->description = $request->description;
+
+        $catagory->parents()->detach();
+        $catagory->parents()->attach($request->parent_id);
+
+        $save = $catagory->save();
+
+        if($save){
+            return back()->with('message','Data has been updated');
+        }
+        else
+        {
+        return back()->with('message','Sorry data cannot be Added');
+        }
     }
 
     /**
