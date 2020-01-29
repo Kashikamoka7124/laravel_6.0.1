@@ -22,6 +22,10 @@ Route::group(['as'=>'admin.', 'middleware'=>['auth','admin'],'prefix'=>'admin'],
 	Route::get('dashboard', 'adminController@dashboard')->name('dashboard');
 
 	Route::get('catagory/all', 'CatagoryController@catagoryTable')->name('catagory.all');
+	Route::get('catagory/trash/{catagory}', 'CatagoryController@Trash')->name('catagory.trash');
+	Route::get('catagory/recovery/{catagory}', 'CatagoryController@recovery')->name('catagory.recovery');
+	Route::get('catagory/Gettrash/', 'CatagoryController@GetTrash')->name('catagory.Gettrash');
+
 
 	Route::resource('product','productController');
 	Route::resource('catagory','CatagoryController');

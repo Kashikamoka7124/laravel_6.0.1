@@ -44,7 +44,7 @@
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{route('admin.catagory.all')}}">All Categories</a>
                 <a class="dropdown-item" href="{{route('admin.catagory.index')}}">Add Category</a>
-                <a class="dropdown-item" href="#">Trashed Categories</a>
+                <a class="dropdown-item" href="{{route('admin.catagory.Gettrash')}}">Trashed Categories</a>
               </div>
           </li>
           <li class="nav-item">

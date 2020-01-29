@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Auth\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+
 use App\Catagory;
 
 class CatagoryController extends Controller
@@ -132,8 +133,47 @@ class CatagoryController extends Controller
      * @param  \App\Catagory  $catagory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Catagory $catagory)
+    public function destroy($id)
     {
-        //
+        $catagory = catagory::withTrashed()->findOrfail($id);
+        if($catagory->parents()->detach() && $catagory->forceDelete())
+        {
+            return back()->with('message','Category Successfully Deleted!');
+        }
+        else
+        {
+            return back()->with('message','Error Deleting Record');
+        }  
+    }
+
+
+
+    public function recovery($id)
+    {
+        $recover = catagory::withTrashed()->findOrfail($id);
+        if($recover->restore()){
+            return back()->with('message', 'Catagory has been Recovered');
+        }
+        else{
+            return back()->with('message', 'Catagory cannot be recovered');
+        }
+        // dd($catagory);
+    }
+
+    public function Trash(Catagory $catagory)
+    {
+        if($catagory->delete()){
+            return back()->with('message','Catagory has been Trashed Successfully');
+        }
+        else{
+            return back()->with('message', 'Catagory cannot be Trashed');
+        }
+    }
+
+    public function GetTrash()
+    {
+        $Trashed = catagory::onlyTrashed()->get();
+        return view('admin.catagory.index', compact('Trashed'));
+        // dd($Trashed);
     }
 }
