@@ -8,7 +8,7 @@ class Product extends Model
 {
     //
     use SoftDeletes;
-    protected $gaurded =[];
+    protected $guarded  =[];
     
     protected $dates = ['deleted_at'];
 

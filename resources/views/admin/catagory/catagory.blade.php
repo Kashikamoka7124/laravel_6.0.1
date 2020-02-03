@@ -67,7 +67,7 @@
                         <label class="form-control-label">Select Category: </label>
                         <select class=" form-control js-example-basic-multiple" id="stylo" name="parent_id[]"
                             multiple="multiple">
-                            <option value="0">chashman Chaudhary</option>
+                            <option value="0">Selec Anything</option>
                             @if(isset($catagories)){
                             @foreach($catagories as $cat)
                             <option value="{{$cat->id}}"> {{$cat->title}}</option>}

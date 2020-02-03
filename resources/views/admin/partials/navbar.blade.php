@@ -25,10 +25,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link @if(request()->url() == route('admin.product.index')){{'active'}}@endif" href="{{route('admin.product.index')}}">
+            <a class="dropdown-toggle dropdown-toggle-split nav-link @if(request()->url() == route('admin.product.index')){{'active'}}@endif" href="{{route('admin.product.index')}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span data-feather="shopping-cart"></span>
               Products
             </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{route('admin.product.all')}}">All Products</a>
+                <a class="dropdown-item" href="{{route('admin.product.index')}}">Add Product</a>
+                <a class="dropdown-item" href="{{route('admin.product.GetTrash')}}">Trashed Product</a>
+              </div>
           </li>
           <li class="nav-item">
             <a class="nav-link @if(request()->url() == route('admin.customer.index')){{'active'}}@endif" href="{{route('admin.customer.index')}}">
@@ -37,7 +42,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="  dropdown-toggle dropdown-toggle-split nav-link @if(request()->url() == route('admin.catagory.index')){{'active'}}@endif" href="{{route('admin.catagory.index')}}"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class=" dropdown-toggle dropdown-toggle-split nav-link @if(request()->url() == route('admin.catagory.index')){{'active'}}@endif" href="{{route('admin.catagory.index')}}"data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span data-feather="bar-chart-2"></span>
               Catagory
             </a>
