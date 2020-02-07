@@ -45,7 +45,7 @@
                             value="{{@$catagory->title}}" required>
                         <p class="small">{{config('app.url')}}- <span
                                 id="slug_url">@if(isset($catagory)){{@$catagory->slug}}@endif</span></p>
-                        <input type="hidden" id="app_url" name="slug">
+                        <input type="hidden" id="app_url" value ="@if(isset($catagory)){{@$catagory->slug}}@endif" name="slug">
                         <div class="invalid-feedback">
                             Valid Title is required.
                         </div>
@@ -67,7 +67,7 @@
                         <label class="form-control-label">Select Category: </label>
                         <select class=" form-control js-example-basic-multiple" id="stylo" name="parent_id[]"
                             multiple="multiple">
-                            <option value="0">Selec Anything</option>
+                            <option value="0">Select Anything</option>
                             @if(isset($catagories)){
                             @foreach($catagories as $cat)
                             <option value="{{$cat->id}}"> {{$cat->title}}</option>}
@@ -77,7 +77,7 @@
                             @elseif(isset($parent_ids))
                             @foreach($editcatagory as $cat)
                             <option value="{{$cat->id}}" @if(!is_null($parent_ids) && in_array($cat->id, $parent_ids))
-                                {{'selected'}} @endif> {{$cat->title}}</option>}
+                                {{'selected'}} @endif> {{$cat->title}}</option>} 
                             option
                             @endforeach
                             @endif

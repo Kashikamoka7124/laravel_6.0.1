@@ -105,7 +105,7 @@ class ProductController extends Controller
     {
         $ids = arr::pluck($product->catagories, 'id');
         $eCatagory = Catagory::where('id','!=', $product->id)->get();
-        return view('admin.product.product',['eproduct'=>$product, 'eCatagory' => $eCatagory]);
+        return view('admin.product.product',['eproduct'=>$product, 'eCatagory' => $eCatagory, 'parent_id' => $ids]);
     }
 
     /**
@@ -117,7 +117,31 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $path = $product->thumbnail;
+        if($request->has('ProductImage'))
+        {
+            $extention = ".".$request->ProductImage->getClientOriginalExtension();
+            $name = basename($request->ProductImage->getClientOriginalName(),$extention);
+            $name = $name.$extention;
+            $path = $request->ProductImage->storeAs('asset/image',$name,'public');
+            $imageSuccess=$request->file('ProductImage')->move(public_path('asset/image'),$request->file('ProductImage')->getClientOriginalName());
+        }
+        $product->title = $request->title; 
+        $product->description = $request->discription; 
+        $product->price = $request->priceOfProduct; 
+        $product->discount = $request->discount_price; 
+        $product->thumbnail = $path; 
+        $product->catagories()->detach();
+
+        $MissionDone = $product->save();
+
+        if($MissionDone)
+        {
+            $product->catagories()->attach($request->product_catagory);
+            return back()->with('message', 'Product has been updated');
+        }
+        return back()->with('message', 'Product is not updated');
+
     }
 
     /**

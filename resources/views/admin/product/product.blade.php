@@ -4,9 +4,11 @@
 <h2>Add Product</h2>
 @endsection
 
-
-<form action="{{route('admin.product.store')}}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-    @csrf
+<form action="@if(isset($eproduct)) {{route('admin.product.update', $eproduct)}} @else {{route('admin.product.store')}} @endif" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+        @csrf
+        @if(isset($eproduct))
+        @method('PUT')
+        @endif
 
     @if(session()->has('message'))
       <div class = 'alert alert-success'>
@@ -76,7 +78,8 @@
 
                         @if(@$eCatagory)
                         @foreach(@$eCatagory as $ecat)
-                        <option value="{{$ecat->id}}">{{$ecat->title}}</option>
+                        <option value="{{$ecat->id}}" @if(!is_null($ecat) && in_array($ecat->id, $parent_id))
+                                {{'selected'}} @endif> {{$ecat->title}}</option>}
                         @endforeach
                         @endif
                     </select>
@@ -93,7 +96,7 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label for="firstName">Title</label>
-                    <input name="title" type="text" class="form-control" id="firstName">
+                    <input name="title" type="text" value ="@if(isset($eproduct)) {{$eproduct->title}} @endif" class="form-control" id="firstName">
                     <div class="invalid-feedback">
                         Valid first name is required.
                     </div>
@@ -104,6 +107,12 @@
                 <div class="col-md-12 mb-3">
                     <label for="firstName">Discription</label>
                     <textarea class="form-control" name="discription" id="editor" cols="30" rows="10">
+
+                    @if(isset($eproduct))
+
+                    {!! $eproduct->description !!}
+
+                    @endif
                     </textarea>
                 </div>
             </div>
@@ -115,8 +124,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input name="priceOfProduct" type="text" class="form-control" id="username"
-                            placeholder="Username">
+                        <input name="priceOfProduct" value ="@if(isset($eproduct)) {{$eproduct->price}}  @endif" type="text" class="form-control" id="username"
+                            placeholder="Price">
                         <div class="invalid-feedback" style="width: 100%;">
                             Price is required
                         </div>
@@ -130,7 +139,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input name="discountOfProduct" type="text" class="form-control" id="discount"
+                        <input name="discountOfProduct" value ="@if(isset($eproduct)) {{$eproduct->discount_price}} @endif" type="text" class="form-control" id="discount"
                             placeholder="Discount">
                         <div class="invalid-feedback" style="width: 100%;">
                             Discount Price is Required
@@ -140,7 +149,7 @@
             </div>
         </div>
     </div>
-</form>
+    </form>
 
 @section('admin_script')
 <script type="text/javascript">
