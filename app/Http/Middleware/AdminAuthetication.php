@@ -24,3 +24,30 @@ class AdminAuthetication
         return $next($request);
     }
 }
+
+
+/*
+    ****************************************************************************
+    |                   Documentation
+    ****************************************************************************
+    |1) Middleware:
+    ****************************************************************************
+    |      Function Handle:
+    |      *********************
+    |                       It works that when a user tries to access the dashboard
+    |      or any other activaties that only allows to the Admin then it will prevent
+    |      to access it by the user 
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    ****************************************************************************
+*/

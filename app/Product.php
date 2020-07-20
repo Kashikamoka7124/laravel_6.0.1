@@ -19,3 +19,26 @@ class Product extends Model
         return $this->belongsToMany('App\catagory','catagory_product');
     }
 }
+
+/*
+	****************************************************************************
+	|					Documentation
+	****************************************************************************
+	|1) RelationShip:
+	****************************************************************************
+	|	Function Categories(): //Note plural name
+	|						It return that it belong to the product model with
+	|	many-to-many relation 
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	****************************************************************************
+*/

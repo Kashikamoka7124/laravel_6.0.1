@@ -177,3 +177,30 @@ class CatagoryController extends Controller
         // dd($Trashed);
     }
 }
+
+
+/*
+    ****************************************************************************
+    |                   Documentation
+    ****************************************************************************
+    |1) Variable:
+    ****************************************************************************
+    |      $Except:
+    |      *********************
+    |             The except method will return all the key/value pairs in the collection
+    |       where the keys in the collection are not in the supplied $keys array.
+    |       Internally, this method makes a call to the
+    |       "Illuminate\Support\Arr:except($array, $keys)" helper function.
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    ****************************************************************************
+*/

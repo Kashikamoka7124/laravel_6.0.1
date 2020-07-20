@@ -4,7 +4,7 @@ use App\Profile;
 use App\Role;
 use App\User;
 use Illuminate\Database\Seeder;
-class AdminUser extends Seeder
+class AdminUser2 extends Seeder
 {
     /**
      * Run the database seeds.
@@ -36,3 +36,26 @@ class AdminUser extends Seeder
 
     }
 }
+
+/*
+	****************************************************************************
+	|					Documentation
+	****************************************************************************
+	|1) Seeding:
+	****************************************************************************
+	|		Seeding will create a user with name and role with admin in the table
+	|	when we will migrate the tables just we to run the query in cmd
+	|	Query:
+	|			php artisan migrate --seed
+	|	
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	|
+	****************************************************************************
+*/
